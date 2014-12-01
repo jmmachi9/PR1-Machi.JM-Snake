@@ -8,6 +8,6 @@ namespace Clases
 {
     class PruebaPIPAS
     {
-        x = 1;
+        int x = 1;
     }
 }
