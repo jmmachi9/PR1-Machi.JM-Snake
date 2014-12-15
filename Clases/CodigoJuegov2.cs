@@ -31,7 +31,7 @@ namespace CodigoJuegov2
             byte arriba = 3;
             int ultimoTiempodeEstrella = 0;
             int tempsDesaparecerEstrella = 8000;
-            int negativePoints = 0;
+            int Puntosnegativos = 0;
 
             Posicion[] Direccions = new Posicion[]
             {
@@ -90,9 +90,9 @@ namespace CodigoJuegov2
 
             while (true)
             {
-                negativePoints++;
-                int userPoints = (parteSnake.Count - 6) * 100 - negativePoints;
-                Console.Title = "Snake version a la Machi, Puntuacion: " + userPoints;
+                Puntosnegativos++;
+                int PuntosUsuario = (parteSnake.Count - 6) * 100 - Puntosnegativos;
+                Console.Title = "Snake version a la Machi, Puntuacion: " + PuntosUsuario;
 
                 direccion = ControlesFlechas(derecha, izquierda, abajo, arriba, direccion);
 
@@ -114,9 +114,9 @@ namespace CodigoJuegov2
                     Console.ForegroundColor = ConsoleColor.Red;
 
                     //int userPoints = (parteSnake.Count - 6) * 100 - negativePoints;
-                    if (userPoints < 0) userPoints = 0;
-                    userPoints = Math.Max(userPoints, 0);
-                    LibreriaClases.GameOver(userPoints);
+                    if (PuntosUsuario < 0) PuntosUsuario = 0;
+                    PuntosUsuario = Math.Max(PuntosUsuario, 0);
+                    LibreriaClases.GameOver(PuntosUsuario);
 
                     return;
                 }
@@ -207,7 +207,7 @@ namespace CodigoJuegov2
 
                 if (Environment.TickCount - ultimoTiempodeEstrella >= tempsDesaparecerEstrella)
                 {
-                    negativePoints = negativePoints + 100;
+                    Puntosnegativos = Puntosnegativos + 100;
                     Console.SetCursorPosition(estrella.columna, estrella.fila);
                     Console.Write(" ");
                     do
