@@ -31,17 +31,23 @@ namespace Clases
             Console.Write(" 	4. Salir   \n");
             Console.WriteLine();
 
+            SubMenu();
+            
+        }
+
+        private static void SubMenu()
+        {
             ConsoleKeyInfo TeclaMenu;
             TeclaMenu = Console.ReadKey(true);
             switch (TeclaMenu.KeyChar)
             {
                 case '1':
-                    
+
                     Console.Clear();
                     Console.WriteLine("\n\nIniciando Juego...");
                     Console.Clear();
                     CodigoJuegov2.Snakev2.Juego();
-                    
+
                     break;
                 case '2':
                     Console.Clear();
@@ -54,15 +60,31 @@ namespace Clases
                     Console.WriteLine("\n\t1ºDAW");
                     Console.WriteLine("\n\tProgramación");
                     Console.WriteLine("\n\n\n\n\n\n\n Si quieres \"Volver\" pulsa V.");
-                    Submenu();
+                    SubMenuCreditos();
                     break;
                 case '4':
                     Console.WriteLine("   \n Hasta la proxima... ");
-                    
+                    Console.Clear();
                     break;
-                
+
             }
-            
+        }
+
+        private static void SubMenuCreditos()
+        {
+            ConsoleKeyInfo TeclaCreditos;
+            TeclaCreditos = Console.ReadKey(true);
+            switch (TeclaCreditos.KeyChar)
+            {
+                case 'V':
+                    
+                    Menu();
+                    break;
+                case 'v':
+                    
+                    Menu();
+                    break;
+            }
         }
 
         public static void GameOver(int puntos)
@@ -70,7 +92,7 @@ namespace Clases
             Console.Clear();
             
             Console.WriteLine();
-            Console.Title = " Si quieres volver a jugar presiona la tecla 'R'. Puntuacion: " + puntos; 
+            Console.Title = " Si quieres volver a jugar presiona la tecla 'R'. Salir 'Q'. Puntuacion: " + puntos; 
             Console.WriteLine(@"  $$$$       $$$$$     $$$     $$$ $$$$$$$ $$$$$$$ $$       $$ $$$$$$$ $$$$$$");
             Console.WriteLine(@" $$         $$   $$    $$ $$ $$ $$ $$      $$   $$  $$     $$  $$      $$  $$");
             Console.WriteLine(@"$$  $$$$   $$ $$$ $$   $$   $$  $$ $$$$    $$   $$   $$   $$   $$$$    $$$$");
@@ -78,32 +100,39 @@ namespace Clases
             Console.WriteLine(@"   $$$$$ $$         $$ $$       $$ $$$$$$$ $$$$$$$     $$      $$$$$$$ $$   $$");
             Console.Write("\n\n\n\n\tPuntos: " + puntos);
 
-            Submenu();
+            SubmenuGameOver();
+            
+            
             
         }
 
-        public static void Submenu()
+        public static void SubmenuGameOver()
         {
             ConsoleKeyInfo TeclaGameOver;
             TeclaGameOver = Console.ReadKey(true);
             switch (TeclaGameOver.KeyChar)
             {
                 case 'R':
-
+                    
                     Menu();
                     break;
                 case 'r':
-
+                    
                     Menu();
                     break;
-                case 'v':
-                    Menu();
+               
+                case 'q':
+                    Console.Clear();
+                    Console.WriteLine("Adiiooos!");
                     break;
-                case 'V':
-                    Menu();
+                    
+                case 'Q':
+                    Console.Clear();
+                    Console.WriteLine("Adiiooos!");
                     break;
                 
             }
+            
         }
     }
 }
