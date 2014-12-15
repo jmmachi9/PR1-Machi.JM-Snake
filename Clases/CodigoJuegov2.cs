@@ -110,27 +110,15 @@ namespace CodigoJuegov2
                 //nouCapdeSerp = siEstrellaSerpienteEnObjeto(negativePoints, obstacles, parteSnake, nouCapdeSerp);
                 if (parteSnake.Contains(nouCapdeSerp) || obstacles.Contains(nouCapdeSerp))
                 {
-                    Console.SetCursorPosition(0, 0);
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    PuntosUsuario = siEstrellamosSerpienteConObjeto(PuntosUsuario);
 
-                    //int userPoints = (parteSnake.Count - 6) * 100 - negativePoints;
-                    if (PuntosUsuario < 0) PuntosUsuario = 0;
-                    PuntosUsuario = Math.Max(PuntosUsuario, 0);
-                    LibreriaClases.GameOver(PuntosUsuario);
-
-                    return;
                 }
 
                 Dibujar(capdeSerp, '#', ConsoleColor.Red);
 
                 //nouCapdeSerp = direcciondeSerpiente(derecha, izquierda, abajo, arriba, direccion, parteSnake, nouCapdeSerp);
                 parteSnake.Enqueue(nouCapdeSerp);
-                Console.SetCursorPosition(nouCapdeSerp.columna, nouCapdeSerp.fila);
-                Console.ForegroundColor = ConsoleColor.Green;
-                if (direccion == derecha) Console.Write(">");
-                if (direccion == izquierda) Console.Write("<");
-                if (direccion == arriba) Console.Write("^");
-                if (direccion == abajo) Console.Write("v");
+                nouCapdeSerp = direccionCabezaSerpiente(derecha, izquierda, abajo, arriba, direccion, nouCapdeSerp);
 
 
 
@@ -227,6 +215,29 @@ namespace CodigoJuegov2
             }
         }
 
+        private static Posicion direccionCabezaSerpiente(byte derecha, byte izquierda, byte abajo, byte arriba, int direccion, Posicion nouCapdeSerp)
+        {
+            Console.SetCursorPosition(nouCapdeSerp.columna, nouCapdeSerp.fila);
+            Console.ForegroundColor = ConsoleColor.Green;
+            if (direccion == derecha) Console.Write(">");
+            if (direccion == izquierda) Console.Write("<");
+            if (direccion == arriba) Console.Write("^");
+            if (direccion == abajo) Console.Write("v");
+            return nouCapdeSerp;
+        }
+
+        private static int siEstrellamosSerpienteConObjeto(int PuntosUsuario)
+        {
+            Console.SetCursorPosition(0, 0);
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            //int puntosUsuario = (parteSnake.Count - 6) * 100 - puntosNegativos;
+            if (PuntosUsuario < 0) PuntosUsuario = 0;
+            PuntosUsuario = Math.Max(PuntosUsuario, 0);
+            LibreriaClases.GameOver(PuntosUsuario);
+            return PuntosUsuario;
+        }
+
         private static Posicion Dibujar(Posicion objeto, char valor, ConsoleColor color)
         {
             Console.SetCursorPosition(objeto.columna, objeto.fila);
@@ -235,7 +246,7 @@ namespace CodigoJuegov2
             return objeto;
         }
 
-        public static int ControlesFlechas(byte derecha, byte izquierda, byte abajo, byte arriba, int direccion)
+        private static int ControlesFlechas(byte derecha, byte izquierda, byte abajo, byte arriba, int direccion)
         {
             if (Console.KeyAvailable)
             {
