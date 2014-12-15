@@ -187,7 +187,7 @@ namespace CodigoJuegov2
                 }
                 else
                 {
-                    // moving...
+                    
                     Posicion last = parteSnake.Dequeue();
                     Console.SetCursorPosition(last.columna, last.fila);
                     Console.Write(" ");

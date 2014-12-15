@@ -102,8 +102,7 @@ namespace Clases
                 case 'V':
                     Menu();
                     break;
-                default:
-                    break;
+                
             }
         }
     }
