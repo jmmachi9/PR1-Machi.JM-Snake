@@ -16,6 +16,7 @@ namespace Clases
         {
             Console.Clear();
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Title = "Menu Snake";
             Console.WriteLine(@"      $$$$     $$$     $$       $$$       $$  $$   $$$$$$$ ");
             Console.WriteLine(@"     $$   $$   $$ $$   $$      $$ $$      $$ $$    $$      ");
@@ -38,8 +39,9 @@ namespace Clases
                     
                     Console.Clear();
                     Console.WriteLine("\n\nIniciando Juego...");
-                    Console.ReadKey();
-                    CodigoJuego.Juego();
+                    Console.Clear();
+                    CodigoJuegov2.Snakev2.Juego();
+                    
                     break;
                 case '2':
                     Console.Clear();
@@ -48,8 +50,11 @@ namespace Clases
                     break;
                 case '3':
                     Console.Clear();
-                    Console.WriteLine("\n\nCreditos...");
-                    Console.ReadKey();
+                    Console.WriteLine("\n\n\tJose Miguel Machi Piles");
+                    Console.WriteLine("\n\t1ºDAW");
+                    Console.WriteLine("\n\tProgramación");
+                    Console.WriteLine("\n\n\n\n\n\n\n Si quieres \"Volver\" pulsa V.");
+                    Submenu();
                     break;
                 case '4':
                     Console.WriteLine("   \n Hasta la proxima... ");
@@ -57,7 +62,7 @@ namespace Clases
                     break;
                 
             }
-            Console.ReadKey();
+            
         }
 
         public static void GameOver(int puntos)
@@ -71,6 +76,14 @@ namespace Clases
             Console.WriteLine(@"$$  $$$$   $$ $$$ $$   $$   $$  $$ $$$$    $$   $$   $$   $$   $$$$    $$$$");
             Console.WriteLine(@" $$   $$  $$       $$  $$       $$ $$      $$   $$    $$ $$    $$      $$  $$");
             Console.WriteLine(@"   $$$$$ $$         $$ $$       $$ $$$$$$$ $$$$$$$     $$      $$$$$$$ $$   $$");
+            Console.Write("\n\n\n\n\tPuntos: " + puntos);
+
+            Submenu();
+            
+        }
+
+        public static void Submenu()
+        {
             ConsoleKeyInfo TeclaGameOver;
             TeclaGameOver = Console.ReadKey(true);
             switch (TeclaGameOver.KeyChar)
@@ -83,10 +96,15 @@ namespace Clases
 
                     Menu();
                     break;
+                case 'v':
+                    Menu();
+                    break;
+                case 'V':
+                    Menu();
+                    break;
                 default:
                     break;
             }
-            
         }
     }
 }

@@ -76,7 +76,7 @@ namespace Clases
                ConsoleKeyInfo BotonAnterior = MovSerp;
                
                 //Els moviments se poden fer en cualquier tecla, lo que vaig a gastar son les flechetes.
-               //while (Quit != false)
+              /// while (Quit != false)
                //{
                      switch (MovSerp.Key)
                        {

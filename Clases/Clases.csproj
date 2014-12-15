@@ -38,9 +38,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodigoJuegov2.cs" />
     <Compile Include="CodigoJuego.cs" />
     <Compile Include="Menu.cs" />
-    <Compile Include="PruebaPIPAS.cs" />
     <Compile Include="Win32API.cs" />
   </ItemGroup>
   <ItemGroup>
